@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyText
+  description: MyText
+  is_open: false
+  issue_type: MyString
+  user_id: 1
+  admin_id: 1
+
+two:
+  title: MyText
+  description: MyText
+  is_open: false
+  issue_type: MyString
+  user_id: 1
+  admin_id: 1
