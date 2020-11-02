@@ -1,0 +1,11 @@
+<%= form_with(model: @ticket) do |f| %>
+    <%= f.label :title %><br>
+    Please provide a 3-5 word summary of your issue:<br>
+    <%= f.text_field :title %><br>
+
+    <%= f.label :description%>
+    (Your detailed issues go here): <br>
+    <%= f.text_area :description %><br>
+    <%= f.text_field :issue_type %><br>
+    <%= f.submit %>
+<% end %>
