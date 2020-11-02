@@ -5,4 +5,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :tickets
+
+  def full_name
+    self.first_name + " " + self.last_name
+  end
+end
+
+class Admin < User
+    
+  def admin_user_id
+    self.id
+  end
 end
