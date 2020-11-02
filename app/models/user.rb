@@ -12,8 +12,9 @@ class User < ApplicationRecord
 end
 
 class Admin < User
-    
-  def admin_user_id
+
+  def user_admin_id
     self.id
   end
+  
 end
