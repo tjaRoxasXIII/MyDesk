@@ -1,7 +1,15 @@
+<table style="width: 75%">
+<tr>
+    <th>Title</th>
+    <th>Submitter</th>
+    <th>Owner</th>
+    <th></th>
+</tr>
 <% @tickets.each do |ticket| %>
-<div>
-    <h3><%= ticket.title %></h3>
-    <h4><%= ticket.description %></h4>
-    <h5>Submitter: <%= ticket.user.full_name %> -- Owner: <%= ticket.admin.full_name %></h5>
-</div>
+<tr>
+    <td><%= link_to ticket.title, ticket_path(ticket) %></td>
+    <td><%= ticket.user.full_name %></td>
+    <td><%= ticket.admin.full_name %></td>
+    <td>Claim or Assign</td>
+</tr>
 <% end %>
