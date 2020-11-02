@@ -1,0 +1,17 @@
+<h1><%= @ticket.title %></h1>
+<h2><%= @ticket.description %></h2>
+<h2>Ticket Status: </h2>
+<% if @ticket.is_open %>
+    Open
+<% else %>
+    Closed
+<% end %>
+
+<h3><%= @ticket.user.full_name %></h3>
+<h3><% if @ticket.superuser %>
+        <%= @ticket.superuser.full_name %>
+    <% else %>
+        Unassigned
+    <% end %>
+</h3>
+

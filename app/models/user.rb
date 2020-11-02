@@ -11,10 +11,10 @@ class User < ApplicationRecord
   end
 end
 
-class Admin < User
+class SuperUser < User
 
   def user_admin_id
     self.id
   end
-  
+
 end
