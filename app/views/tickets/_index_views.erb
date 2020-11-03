@@ -1,6 +1,6 @@
 
-<table style="width: 75%">
-    <tr>
+<table class="table table-striped" style="width: 75%">
+    <tr class="table-secondary">
         <th>Title</th>
         <th>Submitter</th>
         <th>Status</th>
@@ -24,7 +24,7 @@
                 Unassigned
             <% end %>
         </td>
-        <td>Claim or Assign</td>
+        <td> <%= link_to 'Claim or Assign', edit_ticket_path(ticket) %> </td>
     </tr>
     <% end %>
 </table>
@@ -46,11 +46,10 @@
                 Unassigned
             <% end %>
         </td>
-        <td>Claim or Assign</td>
     </tr>
     <% end %>
 </table>
 
 <% end %>
 
-<p><%= link_to "Create a new ticket", new_ticket_path %></p>
+
