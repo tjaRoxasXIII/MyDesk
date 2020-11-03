@@ -1,31 +1,3 @@
 <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-<table style="width: 75%">
-    <tr>
-        <th>Title</th>
-        <th>Submitter</th>
-        <th>Status</th>
-        <th>Owner</th>
-        <th></th>
-    </tr>
-    <% @tickets.each do |ticket| %>
-    <tr>
-        <td><%= link_to ticket.title, ticket_path(ticket) %></td>
-        <td><%= ticket.user.full_name %></td>
-        <td><% if ticket.is_open %>
-            Open
-            <% else %>
-            Closed
-            <% end %>
-        </td>
-        <td><% if ticket.superuser %>
-                <%= ticket.superuser.full_name %>
-            <% else %>
-                Unassigned
-            <% end %>
-        </td>
-        <td>Claim or Assign</td>
-    </tr>
-    <% end %>
-</table>
 
-<p><%= link_to "Create a new ticket", new_ticket_path %></p>
+<%= render "index_views" %>

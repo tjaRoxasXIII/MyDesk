@@ -1,4 +1,6 @@
 class TicketsController < ApplicationController
+    before_action :require_login
+    
     def index
         @tickets = Ticket.all
     end
@@ -12,13 +14,16 @@ class TicketsController < ApplicationController
     end
 
     def create
-        @ticket = Ticket.new(ticket_params)
-        binding.pry
-        @ticket.user_id = current_user.id
-        if @ticket.save
-            redirect_to tickets_path
+        # binding.pry
+        if !current_user.nil?
+            @ticket = Ticket.new(ticket_params)
+            @ticket.user_id = current_user.id
+            @ticket.is_open = true
+            if @ticket.save
+                redirect_to tickets_path
+            end
         else
-            render new_ticket_path
+            redirect_to '/users/sign_in'
         end
     end
 

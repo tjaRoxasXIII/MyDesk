@@ -1,0 +1,56 @@
+
+<table style="width: 75%">
+    <tr>
+        <th>Title</th>
+        <th>Submitter</th>
+        <th>Status</th>
+        <th>Owner</th>
+        <% if current_user.type == "SuperUser" %>
+        <th></th>
+    </tr>
+    <% @tickets.each do |ticket| %>
+    <tr>
+        <td><%= link_to ticket.title, ticket_path(ticket) %></td>
+        <td><%= ticket.user.full_name %></td>
+        <td><% if ticket.is_open %>
+            Open
+            <% else %>
+            Closed
+            <% end %>
+        </td>
+        <td><% if ticket.superuser %>
+                <%= ticket.superuser.full_name %>
+            <% else %>
+                Unassigned
+            <% end %>
+        </td>
+        <td>Claim or Assign</td>
+    </tr>
+    <% end %>
+</table>
+<% else %>
+    </tr>
+    <% current_user.tickets.each do |ticket| %>
+    <tr>
+        <td><%= link_to ticket.title, ticket_path(ticket) %></td>
+        <td><%= ticket.user.full_name %></td>
+        <td><% if ticket.is_open %>
+            Open
+            <% else %>
+            Closed
+            <% end %>
+        </td>
+        <td><% if ticket.superuser %>
+                <%= ticket.superuser.full_name %>
+            <% else %>
+                Unassigned
+            <% end %>
+        </td>
+        <td>Claim or Assign</td>
+    </tr>
+    <% end %>
+</table>
+
+<% end %>
+
+<p><%= link_to "Create a new ticket", new_ticket_path %></p>
