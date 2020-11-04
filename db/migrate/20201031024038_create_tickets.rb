@@ -4,7 +4,7 @@ class CreateTickets < ActiveRecord::Migration[6.0]
       t.text :title
       t.text :description
       t.boolean :is_open
-      t.string :issue_type
+      t.string :issue_type_id
       t.integer :user_id
       t.integer :user_admin_id
 

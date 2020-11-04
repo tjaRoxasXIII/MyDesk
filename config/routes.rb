@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :issue_types
   resources :computers
   resources :tickets
   resources :user, only: [:show]

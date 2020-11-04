@@ -27,9 +27,13 @@ class TicketsController < ApplicationController
         end
     end
 
+    def edit
+        @ticket = Ticket.find_by_id(params[:id])
+    end
+
     private
 
     def ticket_params
-        params.require(:ticket).permit(:title, :description, :is_open, :issue_type)
+        params.require(:ticket).permit(:title, :description, :is_open, :issue_type_id)
     end
 end

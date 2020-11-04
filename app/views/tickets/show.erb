@@ -1,7 +1,7 @@
-<div class="card border-primary">
+<div class="card border-success">
     <h2 class="card-header"><%= @ticket.title %></h2>
     <h3 class="card-body"><%= @ticket.description %></h3>
-    <h3 class="card-body">Ticket Status: 
+    <h3 class="card-header">Ticket Status: 
         <% if @ticket.is_open %>
             Open
         <% else %>
