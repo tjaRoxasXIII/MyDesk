@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :computers
   resources :tickets
+  resources :user, only: [:show]
 
   devise_for :users, :controllers => {registrations: 'user_registrations', omniauth_callbacks: "omniauth_callbacks"}
   # devise_for :users, :controllers => {omniauth_callbacks: "omniauth_callbacks"}
