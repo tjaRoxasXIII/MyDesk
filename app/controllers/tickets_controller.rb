@@ -31,9 +31,15 @@ class TicketsController < ApplicationController
         @ticket = Ticket.find_by_id(params[:id])
     end
 
+    def update
+        @ticket = Ticket.find_by_id(params[:id])
+        @ticket.update(ticket_params)
+        redirect_to tickets_path
+    end
+
     private
 
     def ticket_params
-        params.require(:ticket).permit(:title, :description, :is_open, :issue_type_id)
+        params.require(:ticket).permit(:title, :description, :is_open, :issue_type_id, :user_admin_id)
     end
 end

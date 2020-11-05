@@ -10,7 +10,7 @@
     <%= f.collection_select(:issue_type_id, IssueType.all, :id, :name)%><br>
     <% if current_user.type == "SuperUser" %>
         <%= f.label "Ticket Owner: " %><br>
-        <%= f.collection_select(:admin_user_id, User.where(type: "SuperUser"), :user_admin_id, :full_name, include_blank: 'Unassigned')%><br>
+        <%= f.collection_select(:user_admin_id, User.where(type: "SuperUser"), :user_admin_id, :full_name, include_blank: 'Unassigned')%><br>
     <% end %>
     <%= f.submit %>
 <% end %>

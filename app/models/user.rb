@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable
 
   has_many :tickets
+  has_many :issue_types, through: :tickets
 
   def full_name
     self.first_name + " " + self.last_name

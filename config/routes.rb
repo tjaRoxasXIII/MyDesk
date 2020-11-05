@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   resources :issue_types
   resources :computers
   resources :tickets
-  resources :user, only: [:show]
+  
+  resources :user, only: [:show] do
+    resources :tickets
+  end
 
   devise_for :users, :controllers => {registrations: 'user_registrations', omniauth_callbacks: "omniauth_callbacks"}
   # devise_for :users, :controllers => {omniauth_callbacks: "omniauth_callbacks"}
