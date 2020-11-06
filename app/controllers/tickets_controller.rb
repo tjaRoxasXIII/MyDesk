@@ -5,6 +5,10 @@ class TicketsController < ApplicationController
         @tickets = Ticket.all
     end
 
+    def home
+        @tickets = Ticket.all
+    end
+
     def show
         @ticket = Ticket.find_by_id(params[:id])
     end
