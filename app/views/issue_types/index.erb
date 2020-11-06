@@ -1,0 +1,9 @@
+<ul>
+    <% @issue_types.each do |issue| %>
+        <li class="card-header">
+            <h4><%= issue.name %></h4>
+            <%= button_to "delete", {:controller => :issue_types, :action => 'destroy', :id => issue.id }, :method => :delete  %>
+        </li>
+    <% end  %>
+    <%= link_to "Add New", new_issue_type_path %><br>
+</ul>

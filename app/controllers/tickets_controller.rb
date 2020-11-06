@@ -21,7 +21,11 @@ class TicketsController < ApplicationController
             @ticket.is_open = true
             if @ticket.save
                 redirect_to tickets_path
+            else
+                redirect_to new_user_ticket_path(current_user)
+                flash[:alert] = "Please fill out all fields!"
             end
+
         else
             redirect_to '/users/sign_in'
         end
@@ -40,6 +44,6 @@ class TicketsController < ApplicationController
     private
 
     def ticket_params
-        params.require(:ticket).permit(:title, :description, :is_open, :issue_type_id, :user_admin_id)
+        params.require(:ticket).permit(:title, :description, :is_open, :issue_type_id, )
     end
 end
