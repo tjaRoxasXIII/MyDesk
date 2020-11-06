@@ -40,14 +40,19 @@ class TicketsController < ApplicationController
     end
 
     def update
+        # binding.pry
         @ticket = Ticket.find_by_id(params[:id])
-        @ticket.update(ticket_params)
-        redirect_to tickets_path
+        if @ticket.update(ticket_params)
+            redirect_to tickets_path
+        else
+            render edit_ticket_path(@ticket)
+            flash[:alert] = "Please fill out all fields"
+        end
     end
 
     private
 
     def ticket_params
-        params.require(:ticket).permit(:title, :description, :is_open, :issue_type_id, )
+        params.require(:ticket).permit(:title, :description, :user_admin_id, :is_open, :issue_type_id)
     end
 end

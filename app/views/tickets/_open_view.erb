@@ -9,7 +9,7 @@
         <th>Status</th>
         <th></th>
     </tr>
-    <% @tickets.each do |ticket| %>
+    <% @tickets.where(user_admin_id: current_user.id).or(@tickets.where(user_admin_id: nil)).each do |ticket| %>
     <tr>
         <td><%= link_to ticket.title, ticket_path(ticket) %></td>
         <td><%= ticket.user.full_name %></td>

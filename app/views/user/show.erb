@@ -1,5 +1,15 @@
 <h2 class="card-header">Hello, <%= @user.first_name %></h2>
 
-<h3>Open ticket count: <%= @user.tickets.where(is_open: true).count %></h3>
-<h3>Total number of closed tickets: <%= @user.tickets.where(is_open: false).count %></h3>
-<%= link_to "Click here", user_tickets_path(current_user) %> to see all of your tickets
+<% if current_user.is_admin? %>
+    <h3 class="card bg-success">Personal Ticket Status</h3>
+<% end %>
+<h4>Open ticket count: <%= @user.tickets.where(is_open: true).count %></h4>
+<h4>Total number of closed tickets: <%= @user.tickets.where(is_open: false).count %></h4>
+<% if current_user.is_admin? %><br>
+    <h3 class="card bg-success">Admin Ticket Status</h3>
+    <h4>Open ticket count: <%= Ticket.all.where(user_admin_id: current_user.id, is_open: true).count %></h4>
+    <h4>Total number of closed tickets: <%= Ticket.all.where(user_admin_id: current_user.id, is_open: false).count %></h4>
+    <%= link_to "Click here", user_tickets_path(current_user) %> to see all existing tickets<br>
+<% else %>
+    <%= link_to "Click here", user_tickets_path(current_user) %> to see all of your tickets<br>
+<% end %>
