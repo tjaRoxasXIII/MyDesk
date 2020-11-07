@@ -6,7 +6,7 @@
         <th>Status</th>
         <th>Owner</th>
         <% if current_user.type == "SuperUser" %>
-        <th>Status</th>
+        <th>Category</th>
         <th></th>
     </tr>
     <% @tickets.where(user_admin_id: current_user.id).or(@tickets.where(user_admin_id: nil)).each do |ticket| %>
