@@ -2,8 +2,11 @@
     <% @issue_types.each do |issue| %>
         <li class="card-header">
             <h4><%= issue.name %></h4>
-            <%= button_to "delete", {:controller => :issue_types, :action => 'destroy', :id => issue.id }, :method => :delete  %>
+            <% if issue.tickets.empty? %>
+                <%= button_to "delete", {:controller => :issue_types, :action => 'destroy', :id => issue.id }, :method => :delete  %>
+            <% end %>
         </li>
     <% end  %>
+    <p>Please note: Any Category currently in use cannot be deleted.  Please first switch any tickets with a matching category if you wish to delete one.</p>
     <%= link_to "Add New", new_issue_type_path %><br>
 </ul>
