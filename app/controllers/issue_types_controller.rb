@@ -23,6 +23,10 @@ class IssueTypesController < ApplicationController
         redirect_to issue_types_path
     end
 
+    def most_common_issue
+        @issue_type = IssueType.most_common_occurrence
+    end
+
     def issue_params
         params.require(:issue_type).permit(:name)
     end

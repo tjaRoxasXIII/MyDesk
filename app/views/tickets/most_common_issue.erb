@@ -1,0 +1,12 @@
+<div class="card border-info">
+    <h3 class="card-header">
+        Here is the most common issue type in your environment based upon your submitted tickets:
+    </h3>
+
+
+    <h4 class="card-body">Issue Type:
+        <%= Ticket.most_common_issue[0].name %><br>
+        Ticket Total:
+        <%= Ticket.most_common_issue[1] %>
+    </h4>
+</div>

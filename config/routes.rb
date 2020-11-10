@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :computers
   resources :tickets
   get '/tickets/home'
+  get '/most_common_issue', to: 'tickets#most_common_issue'
   
   resources :user, only: [:show] do
     resources :tickets

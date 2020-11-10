@@ -3,6 +3,8 @@ class TicketsController < ApplicationController
 
     def index
         @tickets = Ticket.all
+        # binding.pry
+        # @tickets_uao = Ticket.all.unassigned_or_owned
     end
 
     def home
@@ -48,6 +50,9 @@ class TicketsController < ApplicationController
             render edit_ticket_path(@ticket)
             flash[:alert] = "Please fill out all fields"
         end
+    end
+
+    def most_common_issue
     end
 
     private

@@ -5,4 +5,13 @@ class Ticket < ApplicationRecord
 
     validates :title, presence: true
     validates :description, presence: true
+
+    def self.most_common_issue
+        @counter = Hash.new(0) 
+        self.all.each do |ticket|
+            @counter[ticket.issue_type] += 1
+        end
+        # binding.pry
+        @counter.sort_by { |issue, number| number}.last
+    end
 end
